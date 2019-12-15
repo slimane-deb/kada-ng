@@ -11,7 +11,7 @@ export class MainLayoutComponent {
   @Input() title: string;
   @Input() menu: Array<Object>;
 
-  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('sidenav', {static: true}) sidenav: MatSidenav;
 
   constructor() { }
 

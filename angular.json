@@ -7,7 +7,26 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -28,8 +47,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/styles/layout/styles.scss",
+              "src/styles/layout/custom-theme.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles/settings/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -88,6 +114,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -119,6 +146,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "autoecole-ng"
 }

@@ -27,7 +27,7 @@
   max-width: 300px;
 }
 
-:host /deep/.mat-sidenav-container[fullscreen] {
+:host ::ng-deep .mat-sidenav-container[fullscreen] {
   top: 55px;
   @include breakpoint($narrow-devices) {
     top: 64px;
@@ -35,13 +35,13 @@
 }
 
 // See https://github.com/angular/material2/issues/998
-:host /deep/ .mat-sidenav-content {
+:host ::ng-deep .mat-sidenav-content {
   transform: none !important;
 }
 
 .main-content {
-  & /deep/ .outlet,
-  & /deep/ .maxed-width {
+  & ::ng-deep .outlet,
+  & ::ng-deep .maxed-width {
     @include breakpoint($narrow-devices) {
       max-width: $page-max-width;
       margin: {
