@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "autoecole-ng": {
+    "kada-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -36,7 +36,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/autoecole-ng",
+            "outputPath": "dist/kada-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -88,18 +88,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "autoecole-ng:build"
+            "browserTarget": "kada-ng:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "autoecole-ng:build:production"
+              "browserTarget": "kada-ng:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "autoecole-ng:build"
+            "browserTarget": "kada-ng:build"
           }
         },
         "test": {
@@ -137,16 +137,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "autoecole-ng:serve"
+            "devServerTarget": "kada-ng:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "autoecole-ng:serve:production"
+              "devServerTarget": "kada-ng:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "autoecole-ng"
+  "defaultProject": "kada-ng"
 }

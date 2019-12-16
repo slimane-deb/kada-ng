@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { Logger } from './logger/logger.service';
+import { Logger } from './service/logger.service';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import {MaterialModule} from '../material/material.module';
-import {ExamenService} from './examen/examen.service';
+import {ToastService} from './service/toast.service';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import {ExamenService} from './examen/examen.service';
   ],
   providers: [
     Logger,
-    ExamenService
+    ToastService
   ]
 })
 

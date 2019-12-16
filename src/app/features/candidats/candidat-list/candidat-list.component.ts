@@ -104,7 +104,7 @@ export class CandidatListComponent implements OnInit {
   }
 
   getAddress(candidat: Candidat): string {
-    return `${candidat.street} ${candidat.city}, ${candidat.state}, ${candidat.zip}`;
+    return `${candidat.address} ${candidat.dob}, ${candidat.phone}, ${candidat.cin}`;
   }
 
   /**

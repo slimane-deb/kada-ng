@@ -1,10 +1,13 @@
 {
-  "name": "autoecole-ng",
+  "name": "kada-ng",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy-conf.json",
     "build": "ng build",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf ../kada/src/main/resources/static/ && mkdirp ../kada/src/main/resources/static",
+    "deploy": "copyfiles -f dist/** ../kada/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -45,6 +48,9 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.3",
+    "rimraf": "^2.6.1",
+    "copyfiles": "^1.2.0",
+    "mkdirp": "^0.5.1"
   }
 }

@@ -3,9 +3,10 @@ export interface Candidat {
   firstName: string;
   lastName: string;
   email: string;
-  work: string;
-  street: string;
-  city: string;
-  state: string;
-  zip: string;
+  sexe: string;
+  address: string;
+  dob: string;
+  phone: string;
+  cin: string;
+  image: any;
 }

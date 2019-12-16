@@ -3,7 +3,7 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {Candidat} from './candidat';
 import {Observable} from 'rxjs';
-import {ExamenService, Logger} from '../../../core';
+import {ToastService, Logger} from '../../../core';
 import {catchError, tap} from 'rxjs/operators';
 
 const httpOptions = {
@@ -19,7 +19,7 @@ export class CandidatService {
   constructor(
     private http: HttpClient,
     private logger: Logger,
-    private examenService: ExamenService) {
+    private toastService: ToastService) {
   }
 
   /**
@@ -97,6 +97,6 @@ export class CandidatService {
   }
 
   protected notify(message: string, method: string) {
-    this.examenService.openSnackBar(message, method);
+    this.toastService.openSnackBar(message, method);
   }
 }

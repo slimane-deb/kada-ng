@@ -27,11 +27,11 @@ export class CandidatDetailComponent implements OnInit {
       firstName: new FormControl(this.contact.firstName, Validators.required),
       lastName: new FormControl(this.contact.lastName, Validators.required),
       email: new FormControl(this.contact.email, [Validators.required, Validators.email]),
-      work: new FormControl(this.contact.work, Validators.required),
-      street: new FormControl(this.contact.street, Validators.required),
-      city: new FormControl(this.contact.city, Validators.required),
-      state: new FormControl(this.contact.state, Validators.required),
-      zip: new FormControl(this.contact.zip, Validators.required)
+      work: new FormControl(this.contact.sexe, Validators.required),
+      street: new FormControl(this.contact.address, Validators.required),
+      city: new FormControl(this.contact.dob, Validators.required),
+      state: new FormControl(this.contact.phone, Validators.required),
+      zip: new FormControl(this.contact.cin, Validators.required)
     });
   }
 
