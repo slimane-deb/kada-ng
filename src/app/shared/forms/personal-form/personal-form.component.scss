@@ -2,3 +2,12 @@
   display: block;
   width: 70%;
 }
+.example-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+  width: 50px;
+}
+
+.example-radio-button {
+  margin: 10px;
+}

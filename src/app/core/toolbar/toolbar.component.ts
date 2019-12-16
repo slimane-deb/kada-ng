@@ -8,7 +8,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 })
 export class ToolbarComponent implements OnInit {
 
-  @Input() menu: Array<Object>;
+  @Input() menu: Array<any>;
   @Input() title: string;
   // Raise the event to the parent 'MainLayoutComponent'
   @Output() toggleSidebar = new EventEmitter();

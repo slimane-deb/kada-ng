@@ -9,7 +9,7 @@
 }
 
 .app-title {
-  font-size: 13px;
+  font-size: 18px;
   //text-transform: uppercase;
   @include breakpoint($narrow-devices) {
     display: none;
@@ -72,7 +72,7 @@
 }
 
 .docs-angular-logo {
-  height: 26px;
+  height: 72px;
   margin: 0 4px 3px 0;
   vertical-align: middle;
 }

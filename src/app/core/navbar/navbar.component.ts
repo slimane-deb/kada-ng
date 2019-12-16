@@ -8,7 +8,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @Input() menu: Array<Object>;
+  @Input() menu: Array<any>;
   constructor() { }
 
   ngOnInit() {

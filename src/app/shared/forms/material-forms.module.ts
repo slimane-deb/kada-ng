@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MaterialModule} from '../../material/material.module';
-import {AddressFormComponent} from './address-form/address-form.component';
+import {MaterialModule} from '../../material.module';
+import {PersoNextFormComponent} from './perso-next-form/perso-next-form.component';
 import {PersonalFormComponent} from './personal-form/personal-form.component';
 import {ResultFormComponent} from './result-form/result-form.component';
-import {WorkFormComponent} from './work-form/work-form.component';
 
 
 
@@ -17,20 +16,17 @@ import {WorkFormComponent} from './work-form/work-form.component';
     MaterialModule
   ],
   declarations: [
-    AddressFormComponent,
+    PersoNextFormComponent,
     PersonalFormComponent,
     ResultFormComponent,
-    WorkFormComponent
   ],
-  exports:[
+  exports: [
     MaterialModule,
-    AddressFormComponent,
+    PersoNextFormComponent,
     PersonalFormComponent,
     ResultFormComponent,
-    WorkFormComponent
   ],
   entryComponents: [
-    WorkFormComponent
   ]
 })
 export class MaterialFormsModule { }

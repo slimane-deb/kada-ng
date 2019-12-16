@@ -1,11 +1,28 @@
 <form [formGroup]="form">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="First Name" formControlName="firstName" required>
+    <input matInput placeholder="Nom" formControlName="nom" required>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Last Name" formControlName="lastName" required>
+    <input matInput placeholder="Prénom" formControlName="prenom" required>
   </mat-form-field>
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Email address" type="email" formControlName="email" required>
+    <input matInput placeholder="Nom Jeune Fille" formControlName="nomJF" required>
   </mat-form-field>
+  <mat-radio-group class="example-radio-group" formControlName="sexe">
+    <label id="group-label">Sexe</label>
+    <mat-radio-button class="example-radio-button" value="h">Homme</mat-radio-button>
+    <mat-radio-button class="example-radio-button" value="f">Femme</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field class="example-full-width">
+  <input matInput [matDatepicker]="picker" placeholder="Date Naissancee" formControlName="dateNaiss" required>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Téléphone" formControlName="tel" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" type="email" formControlName="email" required>
+  </mat-form-field>
+
 </form>

@@ -9,7 +9,7 @@ import {MatSidenav} from '@angular/material';
 export class MainLayoutComponent {
   // Receive menu object and title from the parent 'AppComponent'
   @Input() title: string;
-  @Input() menu: Array<Object>;
+  @Input() menu: Array<any>;
 
   @ViewChild('sidenav', {static: true}) sidenav: MatSidenav;
 

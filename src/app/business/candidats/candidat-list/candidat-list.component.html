@@ -1,0 +1,66 @@
+<div layout="row" layout-align="space-between center" flex class="layout-align-space-between-center layout-row flex">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Candidats">
+  </mat-form-field>
+
+  <button class="btn-secondary" mat-mini-fab matTooltip="Add a candidat">
+    <mat-icon routerLink="/candidats/add" aria-label="add candidat">add</mat-icon>
+  </button>
+</div>
+
+<div class="basic-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="desc" matSortDisableClear>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>ID</th>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.id }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom Complet</th>
+      <td mat-cell *matCellDef="let candidat">{{ getFullName(candidat) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.email }}</td>
+    </ng-container>
+
+    <!-- Work Type Column -->
+    <ng-container matColumnDef="work">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>N° Téléphone</th>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.nrotel }}</td>
+    </ng-container>
+
+    <!-- State Column -->
+    <ng-container matColumnDef="state">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.state }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.adresse }}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+      <td mat-cell *matCellDef="let candidat">
+        <button mat-icon-button color="accent" matTooltip="edit a candidat">
+          <mat-icon (click)="editCandidat(candidat.id)" aria-label="edit candidat">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="delete a candidat">
+          <mat-icon (click)="deleteCandidat(candidat)" aria-label="delete candidat">delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+</div>

@@ -8,7 +8,7 @@ import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import {MaterialModule} from '../material/material.module';
+import {MaterialModule} from '../material.module';
 import {ToastService} from './service/toast.service';
 
 
