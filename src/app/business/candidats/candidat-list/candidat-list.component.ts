@@ -62,8 +62,8 @@ export class CandidatListComponent implements OnInit {
       const dialogConfig = new MatDialogConfig();
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
-      dialogConfig.height = '300px';
-      dialogConfig.width = '450px';
+      dialogConfig.height = '80%';
+      dialogConfig.width = '80%';
       dialogConfig.data = data;
 
       const dialogRef = this.dialog.open(CandidatDetailComponent, dialogConfig);
@@ -103,20 +103,13 @@ export class CandidatListComponent implements OnInit {
     return `${candidat.nom} ${candidat.prenom}`;
   }
 
-  // getAddress(candidat: Candidat): string {
-  //   return `${candidat.adresse} ${candidat.dateNaiss}, ${candidat.nrotel}, ${candidat.cin}`;
-  // }
-
-  /**
-   * Update a list of table columns to be displayed based on the width of the screen.
-   */
   setDisplayedColumns() {
     if (this.screenWidth < 420) {
-      this.displayedColumns = ['id', 'fullName', 'work', 'action'];
+      this.displayedColumns = ['id', 'fullName', 'adresse', 'action'];
     } else if (this.screenWidth >= 420 && this.screenWidth <= 800) {
-      this.displayedColumns = ['id', 'fullName', 'email', 'work', 'state', 'action'];
+      this.displayedColumns = ['id', 'fullName', 'tel', 'adresse', 'action'];
     } else {
-      this.displayedColumns = ['id', 'fullName', 'email', 'work', 'address', 'action'];
+      this.displayedColumns = ['id', 'fullName', 'tel', 'adresse', 'dateNaiss', 'action'];
     }
   }
 

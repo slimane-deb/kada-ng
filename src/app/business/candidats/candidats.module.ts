@@ -14,7 +14,8 @@ import {SharedModule} from '../../shared/shared.module';
   imports: [
     SharedModule,
     MaterialFormsModule,
-    CandidatsRoutingModule
+    CandidatsRoutingModule,
+    CommonModule
   ],
   declarations: [
     CandidatDetailComponent,

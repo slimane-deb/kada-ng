@@ -10,28 +10,40 @@ import {Candidat} from '../candidat';
 })
 export class CandidatDetailComponent implements OnInit {
 
-  title = 'Edit Contact';
+  title = 'Edit Candidat';
   form: FormGroup;
 
   constructor(
     private dialogRef: MatDialogRef<CandidatDetailComponent>,
-    @Inject(MAT_DIALOG_DATA) public contact: Candidat) { }
+    @Inject(MAT_DIALOG_DATA) public candidat: Candidat) { }
 
   ngOnInit() {
     this.buildForm();
+    // this.form.valueChanges.subscribe(val => {
+    //   console.log(val);
+    // });
   }
 
   buildForm() {
     this.form = new FormGroup({
-      id: new FormControl(this.contact.id),
-      firstName: new FormControl(this.contact.nom, Validators.required),
-      lastName: new FormControl(this.contact.prenom, Validators.required),
-      email: new FormControl(this.contact.email, [Validators.required, Validators.email]),
-      work: new FormControl(this.contact.sexe, Validators.required),
-      street: new FormControl(this.contact.adresse, Validators.required),
-      city: new FormControl(this.contact.dateNaiss, Validators.required),
-      state: new FormControl(this.contact.nrotel, Validators.required),
-      zip: new FormControl(this.contact.cin, Validators.required)
+      id: new FormControl(this.candidat.id),
+      nom: new FormControl(this.candidat.nom, Validators.required),
+      prenom: new FormControl(this.candidat.prenom, Validators.required),
+      sexe: new FormControl(this.candidat.sexe, Validators.required),
+      nomJF: new FormControl(this.candidat.prenom),
+      email: new FormControl(this.candidat.email, [Validators.required, Validators.email]),
+      adresse: new FormControl(this.candidat.adresse, Validators.required),
+      dateNaiss: new FormControl(this.candidat.dateNaiss, Validators.required),
+      tel: new FormControl(this.candidat.tel, Validators.required),
+      cin: new FormControl(this.candidat.cin, Validators.required),
+      comm_enr: new FormControl(this.candidat.comm_enr, Validators.required),
+      comm_resid: new FormControl(this.candidat.comm_resid, Validators.required),
+    prenomP: new FormControl(this.candidat.prenomP, Validators.required),
+      nomM: new FormControl(this.candidat.nomM, Validators.required),
+      prenomM: new FormControl(this.candidat.prenomM, Validators.required),
+    nation: new FormControl(this.candidat.nation, Validators.required),
+      sang_grp: new FormControl(this.candidat.sang_grp, Validators.required),
+      sit_fam: new FormControl(this.candidat.sit_fam, Validators.required),
     });
   }
 

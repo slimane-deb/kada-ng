@@ -18,12 +18,12 @@
         Info Additionnelle
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <app-next-form [form]="form"></app-next-form>
+    <app-next-form [form]="form" ></app-next-form>
   </mat-expansion-panel>
 
   <div class="top-15" align="end">
-    <button mat-raised-button (click)="close()">Close</button>
-    <button class="btn-success" mat-raised-button [disabled]="!form.valid || !form.dirty" (click)="save()">Save</button>
+    <button mat-raised-button (click)="close()">Fermer</button>
+    <button class="btn-success" mat-raised-button [disabled]="!form.valid || !form.dirty" (click)="save()">Enregister</button>
   </div>
 
 </mat-accordion>

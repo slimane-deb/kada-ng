@@ -7,7 +7,12 @@ import {ToastService, Logger} from '../../core';
 import {catchError, map, tap} from 'rxjs/operators';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTION',
+      'Access-Control-Allow-Headers': '*'
+  })
 };
 @Injectable({
   providedIn: 'root'
@@ -54,16 +59,16 @@ export class CandidatService {
 
   addCandidat(candidat: Candidat): Observable<any> {
     return this.http
-      .post<Candidat>(this.candidatsUrl, candidat, httpOptions)
+      .post<Candidat>(this.candidatsUrl, candidat)
       .pipe(
-        tap((candidat: Candidat) => this.notify(`added hero w/ id=${candidat.id}`, 'POST')),
+        tap((c: Candidat) => this.notify(`added candidats w/ id=${c.id}`, 'POST')),
         catchError(this.handleError('addCandidat', 'POST'))
       );
   }
 
   updateCandidat(candidat: Candidat): Observable<any> {
     return this.http
-      .put(this.candidatsUrl, candidat, httpOptions)
+      .put(this.candidatsUrl, candidat)
       .pipe(
         tap(_ => this.notify(`updated candidat id=${candidat.id}`, 'PUT')),
         catchError(this.handleError('updateCandidat', 'PUT'))
@@ -80,7 +85,15 @@ export class CandidatService {
         catchError(this.handleError('deleteCandidat', 'DELETE'))
       );
   }
-
+  loadCandidatsExamen(idExamen: string): Observable<any>  {
+    const url = `${this.candidatsUrl}/${idExamen}`;
+    return this.http
+      .get<Candidat>(url, httpOptions)
+      .pipe(
+        tap(_ => this.notify('fetched candidats', 'GET')),
+        catchError(this.handleError('getCandidats', 'GET')),
+      );
+  }
   /**
    * Prepare an error handler for failed HTTP requests.
    * That handler extracts the error message and logs it.

@@ -1,1 +1,57 @@
-<p>examen-list works!</p>
+<div layout="row" layout-align="space-between center" flex class="layout-align-space-between-center layout-row flex">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Recherche">
+  </mat-form-field>
+
+  <button class="btn-secondary" mat-mini-fab matTooltip="Add a examen">
+    <mat-icon [routerLink]="['/add']" aria-label="add examen">Ajouter</mat-icon>
+  </button>
+</div>
+
+<div class="basic-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="desc" matSortDisableClear>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>ID</th>
+      <td mat-cell *matCellDef="let examen">{{ examen.id }}</td>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let examen">{{ examen.date | date: 'dd/MM/yyyy'}}</td>
+    </ng-container>
+
+    <!-- Work Type Column -->
+    <ng-container matColumnDef="dicipline">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dicipline</th>
+      <td mat-cell *matCellDef="let examen">{{ examen.dicipline }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu</th>
+      <td mat-cell *matCellDef="let examen">{{ examen.adresse }}</td>
+    </ng-container>
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+      <td mat-cell *matCellDef="let examen">
+        <button mat-icon-button color="accent" matTooltip="edit">
+          <mat-icon (click)="editExamen(examen.id)" aria-label="edit examen">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="delete">
+          <mat-icon (click)="deleteCandidat(examen)" aria-label="delete examen">delete_forever</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" matTooltip="Liste Candidats">
+          <mat-icon [routerLink]="[examen.id]"  aria-label="delete examen">people</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+</div>

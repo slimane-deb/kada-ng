@@ -6,7 +6,14 @@ export interface Candidat {
   sexe: string;
   adresse: string;
   dateNaiss: string;
-  nrotel: string;
+  tel: string;
   cin: string;
+  // todo
   image: any;
+
+  comm_enr: string; comm_resid: string;
+  prenomP: string; nomM: string; prenomM: string;
+  nation: string; sang_grp: string; sit_fam: string;
+
+  examens: any;
 }

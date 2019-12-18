@@ -28,20 +28,19 @@
       <td mat-cell *matCellDef="let candidat">{{ candidat.email }}</td>
     </ng-container>
 
-    <!-- Work Type Column -->
-    <ng-container matColumnDef="work">
+    <ng-container matColumnDef="tel">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>N° Téléphone</th>
-      <td mat-cell *matCellDef="let candidat">{{ candidat.nrotel }}</td>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.tel }}</td>
     </ng-container>
 
     <!-- State Column -->
-    <ng-container matColumnDef="state">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
-      <td mat-cell *matCellDef="let candidat">{{ candidat.state }}</td>
+    <ng-container matColumnDef="dateNaiss">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Naissance</th>
+      <td mat-cell *matCellDef="let candidat">{{ candidat.dateNaiss | date:'dd/MM/yyyy' }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+    <ng-container matColumnDef="adresse">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</th>
       <td mat-cell *matCellDef="let candidat">{{ candidat.adresse }}</td>
     </ng-container>
 

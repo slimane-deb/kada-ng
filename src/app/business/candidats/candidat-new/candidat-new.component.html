@@ -2,7 +2,7 @@
   <div class="top-container">
     <span class="md-lgn-headline">{{ title }}</span>
     <button class="btn-secondary" mat-mini-fab matTooltip="Home">
-      <mat-icon routerLink="/" aria-label="Home">Accueil</mat-icon>
+      <mat-icon routerLink="/" aria-label="home icon">home</mat-icon>
     </button>
   </div>
 </div>
@@ -18,7 +18,7 @@
       </div>
     </mat-step>
 
-    <!-- Step 1: Work Form -->
+    <!-- Step 1: Next Form -->
     <mat-step [stepControl]="persoNext">
       <ng-template matStepLabel>Information</ng-template>
       <app-next-form [form]="persoNext"></app-next-form>
@@ -44,7 +44,7 @@
       <app-result-form [formData]="getCandidat()"></app-result-form>
       <div class="top-15">
         <button mat-raised-button matStepperPrevious>Précedent</button>
-        <button class="btn-success" mat-raised-button cdkFocusInitial (click)="save()">Save</button>
+        <button class="btn-success" mat-raised-button cdkFocusInitial (click)="save()">Enregistrer</button>
       </div>
     </mat-step>
 

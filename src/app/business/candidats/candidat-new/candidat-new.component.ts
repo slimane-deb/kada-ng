@@ -33,8 +33,11 @@ export class CandidatNewComponent implements OnInit {
     this.personalForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      nomJF: '', sexe: '', dateNaiss: '',
-      tel: ['', [Validators.required, Validators.pattern('^0\d{3}-\d{3}-\d{3}$')] ],
+      sexe: ['', Validators.required],
+      nomJF: ['', Validators.required],
+      dateNaiss: ['', Validators.required],
+      cin: ['', Validators.required],
+      tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')] ],
       email: ['', [Validators.required, Validators.email] ]
     });
   }
