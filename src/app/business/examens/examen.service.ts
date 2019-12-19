@@ -52,7 +52,7 @@ export class ExamenService {
 
   update(examen: Examen): Observable<any> {
     return this.http
-      .put(this.examensUrl, examen)
+      .put<Examen>(`${this.examensUrl}/${examen.id}`, examen)
       .pipe(
         tap(_ => this.notify(`updated examen id=${examen.id}`, 'PUT')),
         catchError(this.handleError('update', 'PUT'))

@@ -37,7 +37,7 @@ export class CandidatService {
       .pipe(
         map( response => {
           // console.log(response._embedded.candidats);
-          return  response;
+          return  response._embedded.candidats;
         } ),
         tap(_ => this.notify('fetched candidats', 'GET')),
         catchError(this.handleError('getCandidats', 'GET')),
@@ -68,7 +68,7 @@ export class CandidatService {
 
   updateCandidat(candidat: Candidat): Observable<any> {
     return this.http
-      .put<Candidat>(this.candidatsUrl, candidat)
+      .put<Candidat>(`${this.candidatsUrl}/${candidat.id}`, candidat)
       .pipe(
         tap(_ => this.notify(`updated candidat id=${candidat.id}`, 'PUT')),
         catchError(this.handleError('updateCandidat', 'PUT'))
