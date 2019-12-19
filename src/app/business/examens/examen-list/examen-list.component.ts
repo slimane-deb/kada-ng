@@ -56,7 +56,7 @@ export class ExamenListComponent implements OnInit {
     });
   }
 
-  editExamen(id: number): void {
+  editExamen(id: string): void {
 
     this.examenService.findOne(id).subscribe(data => {
       const dialogConfig = new MatDialogConfig();

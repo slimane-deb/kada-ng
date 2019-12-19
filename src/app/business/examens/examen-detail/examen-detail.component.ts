@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Candidat} from '../../candidats/candidat';
 import {MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {ConfirmedDialogComponent} from '../../../shared/dialogs';
@@ -6,6 +6,8 @@ import {CandidatService} from '../../candidats/candidat.service';
 import {Logger} from '../../../core';
 import {ExamenService} from '../examen.service';
 import {ActivatedRoute} from '@angular/router';
+import {Examen} from '../examen';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-examen-detail',
@@ -15,12 +17,21 @@ import {ActivatedRoute} from '@angular/router';
 export class ExamenDetailComponent implements OnInit {
 
   displayedColumns: string[];
-  dataSource = new MatTableDataSource();
+  dsExam = new MatTableDataSource();
   screenHeight: any;
   screenWidth: any;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   id: string;
+  examen$: Observable<Examen>;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event?) {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    this.logger.log(`Resize() height: ${this.screenHeight}; width: ${this.screenWidth}`);
+    this.setDisplayedColumns();
+  }
 
   constructor( private examenService: ExamenService,
                private candidatService: CandidatService,
@@ -36,14 +47,19 @@ export class ExamenDetailComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.examen$ = this.examenService.findOne(this.id);
     this.loadCandidatsExamen();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    console.log(this.dataSource);
+    this.dsExam.paginator = this.paginator;
+    this.dsExam.sort = this.sort;
+    console.log(this.dsExam);
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+  private loadCandidatsExamen() {
+    this.candidatService.loadCandidatsByExamen(this.id).subscribe(data => {
+      this.dsExam.data = data;
+    });
   }
+
   deleteCandidatExamen(candidat: Candidat): void {
     // Create configuration for the dialog
     const dialogConfig = new MatDialogConfig();
@@ -60,7 +76,7 @@ export class ExamenDetailComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dataSource.data = this.dataSource.data.filter(e => e !== candidat);
+        this.dsExam.data = this.dsExam.data.filter(e => e !== candidat);
         this.examenService.deleteCandidatExamen(candidat.id).subscribe();
       }
     });
@@ -80,9 +96,5 @@ export class ExamenDetailComponent implements OnInit {
     }
   }
 
-  private loadCandidatsExamen() {
-    this.candidatService.loadCandidatsExamen(this.id).subscribe(data => {
-      this.dataSource.data = data;
-    });
-  }
+
 }

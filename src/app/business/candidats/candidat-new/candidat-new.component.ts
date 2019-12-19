@@ -26,6 +26,10 @@ export class CandidatNewComponent implements OnInit {
   ngOnInit() {
     this.buildPersonalForm();
     this.buildPersoNextForm();
+    this.personalForm.valueChanges.subscribe( value => {
+      console.log(value); });
+    this.persoNext.valueChanges.subscribe(val => {
+      console.log(val); });
     // this.buildAddressForm();
   }
 
@@ -33,8 +37,8 @@ export class CandidatNewComponent implements OnInit {
     this.personalForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
-      sexe: ['', Validators.required],
-      nomJF: ['', Validators.required],
+      sexe: ['h', Validators.required],
+      nomJF: ['', ],
       dateNaiss: ['', Validators.required],
       cin: ['', Validators.required],
       tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')] ],
@@ -76,10 +80,6 @@ export class CandidatNewComponent implements OnInit {
       }
     });
   }
-
-  /**
-   * Return true if at least either personForm, workForm or addressForm is invalid
-   */
   invalidForms(): boolean {
     return (this.personalForm.invalid ||
       this.persoNext.invalid
@@ -87,12 +87,6 @@ export class CandidatNewComponent implements OnInit {
     );
   }
 
-  /**
-   * Return Candidat instance by combining the following.
-   *   personalForm.value => firstName, lastName, email
-   *   workForm.value => work
-   *   addressForm.value => street, city, state, zip
-   */
   getCandidat(): Candidat {
     return { ...this.personalForm.value, ...this.persoNext.value };
   }

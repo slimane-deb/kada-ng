@@ -9,18 +9,16 @@
 <div class="basic-container mat-elevation-z8">
   <mat-horizontal-stepper [linear]="true" #stepper>
 
-    <!-- Step 1: Personal Form -->
     <mat-step [stepControl]="personalForm">
       <ng-template matStepLabel>Coordonnées</ng-template>
       <app-personal-form [form]="personalForm"></app-personal-form>
       <div>
-        <button mat-raised-button matStepperNext type="button" matTooltip="Next Step" class="btn-primary">Suivant</button>
+        <button mat-raised-button matStepperNext class="btn-primary">Suivant</button>
       </div>
     </mat-step>
 
-    <!-- Step 1: Next Form -->
     <mat-step [stepControl]="persoNext">
-      <ng-template matStepLabel>Information</ng-template>
+      <ng-template matStepLabel>Détails</ng-template>
       <app-next-form [form]="persoNext"></app-next-form>
       <div class="top-15">
         <button mat-raised-button matStepperPrevious>Précédent</button>
@@ -28,17 +26,6 @@
       </div>
     </mat-step>
 
-    <!-- Step 3: Address Form -->
-<!--    <mat-step [stepControl]="addressForm">
-      <ng-template matStepLabel>Adresse</ng-template>
-      <app-address-form [form]="addressForm"></app-address-form>
-      <div>
-        <button mat-raised-button matStepperPrevious>Précedent</button>
-        <button class="btn-primary" mat-raised-button matStepperNext>Suivant</button>
-      </div>
-    </mat-step>-->
-
-    <!-- Step 4: Result Form -->
     <mat-step>
       <ng-template matStepLabel>Revue</ng-template>
       <app-result-form [formData]="getCandidat()"></app-result-form>

@@ -8,7 +8,7 @@ import {catchError, map, tap} from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/hal+json',
       'Access-Control-Allow-Origin': 'http://localhost:4200',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTION',
       'Access-Control-Allow-Headers': '*'
@@ -37,7 +37,7 @@ export class CandidatService {
       .pipe(
         map( response => {
           // console.log(response._embedded.candidats);
-          return  response._embedded.candidats;
+          return  response;
         } ),
         tap(_ => this.notify('fetched candidats', 'GET')),
         catchError(this.handleError('getCandidats', 'GET')),
@@ -68,7 +68,7 @@ export class CandidatService {
 
   updateCandidat(candidat: Candidat): Observable<any> {
     return this.http
-      .put(this.candidatsUrl, candidat)
+      .put<Candidat>(this.candidatsUrl, candidat)
       .pipe(
         tap(_ => this.notify(`updated candidat id=${candidat.id}`, 'PUT')),
         catchError(this.handleError('updateCandidat', 'PUT'))
@@ -85,11 +85,16 @@ export class CandidatService {
         catchError(this.handleError('deleteCandidat', 'DELETE'))
       );
   }
-  loadCandidatsExamen(idExamen: string): Observable<any>  {
-    const url = `${this.candidatsUrl}/${idExamen}`;
+  loadCandidatsByExamen(idExamen: string): Observable<any>  {
+    const url = `${this.baseUrl}examens/${idExamen}/candidats`;
     return this.http
-      .get<Candidat>(url, httpOptions)
+      .get<any>(url, httpOptions)
       .pipe(
+        map(
+        response => {
+          return response._embedded.candidats;
+        }
+        ),
         tap(_ => this.notify('fetched candidats', 'GET')),
         catchError(this.handleError('getCandidats', 'GET')),
       );

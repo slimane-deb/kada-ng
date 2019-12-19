@@ -12,7 +12,7 @@ import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material'
 export class PersonalFormComponent implements OnInit {
 
   @Input() form: FormGroup;
-  sexe: any;
+  sexe = 'h';
   constructor() { }
 
   ngOnInit() {
