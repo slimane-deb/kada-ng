@@ -24,14 +24,14 @@ export class ExamenService {
       .get<any>(this.examensUrl)
       .pipe(
         map( response => {
-          return  response;
+          return  response._embedded.examens;
         } ),
         tap(_ => this.notify('fetched Examens', 'GET')),
         catchError(this.handleError('findAll', 'GET')),
       );
   }
 
-  findOne(id: string): Observable<any> {
+  findById(id: string): Observable<any> {
     const url = `${this.examensUrl}/${id}`;
     return this.http
       .get<Examen>(url)
@@ -41,7 +41,7 @@ export class ExamenService {
       );
   }
 
-  add(examen: Examen): Observable<any> {
+  save(examen: Examen): Observable<any> {
     return this.http
       .post<Examen>(this.examensUrl, examen)
       .pipe(

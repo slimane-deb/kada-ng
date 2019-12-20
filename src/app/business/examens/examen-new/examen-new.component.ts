@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Logger} from '../../../core';
+import {ExamenService} from '../examen.service';
+import {Examen} from '../examen';
 
 @Component({
   selector: 'app-examen-new',
@@ -7,9 +12,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExamenNewComponent implements OnInit {
 
-  constructor() { }
+  title = 'Ajouter Examen';
+  examenFrom: FormGroup;
+  // addressForm: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private examenService: ExamenService,
+    private logger: Logger) { }
 
   ngOnInit() {
+    this.buildExamenForm();
+    this.examenFrom.valueChanges.subscribe(val => {
+      console.log(val); });
+    // this.buildAddressForm();
   }
 
+  buildExamenForm(): void {
+    this.examenFrom = this.formBuilder.group({
+      date: ['', Validators.required],
+      adresse: ['', Validators.required],
+      dicipline: ['', Validators.required ],
+    });
+  }
+
+  save() {
+    if (this.invalidForms()) {
+      return;
+    }
+
+    const newExamen = this.getExamen();
+    this.logger.log(`New Examen: ${newExamen}`);
+
+    this.examenService.save(newExamen).subscribe(result => {
+      if (result) {
+        // go to Examen List page
+        this.router.navigate(['/']);
+      }
+    });
+  }
+  invalidForms(): boolean {
+    return this.examenFrom.invalid;
+  }
+
+  getExamen(): Examen {
+    return { ...this.examenFrom.value };
+  }
 }

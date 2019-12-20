@@ -8,6 +8,7 @@ import { ExamenNewComponent } from './examen-new/examen-new.component';
 import {ExamenService} from './examen.service';
 import {SharedModule} from '../../shared/shared.module';
 import {MaterialFormsModule} from '../../shared/forms/material-forms.module';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,6 @@ import {MaterialFormsModule} from '../../shared/forms/material-forms.module';
     MaterialFormsModule,
     ExamensRoutingModule,
   ],
-  providers: [ExamenService]
+  providers: [ExamenService],
 })
 export class ExamensModule { }

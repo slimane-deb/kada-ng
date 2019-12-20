@@ -33,7 +33,7 @@ export class CandidatDetailComponent implements OnInit {
       nomJF: new FormControl(this.candidat.prenom),
       email: new FormControl(this.candidat.email, [Validators.required, Validators.email]),
       adresse: new FormControl(this.candidat.adresse, Validators.required),
-      dateNaiss: new FormControl(this.candidat.dateNaiss, Validators.required),
+      dateNaiss: new FormControl(new Date(this.candidat.dateNaiss), Validators.required),
       tel: new FormControl(this.candidat.tel, Validators.required),
       cin: new FormControl(this.candidat.cin, Validators.required),
       comm_enr: new FormControl(this.candidat.comm_enr, Validators.required),

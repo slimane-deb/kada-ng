@@ -4,7 +4,7 @@
   </mat-form-field>
 
   <button class="btn-secondary" mat-mini-fab matTooltip="Add a examen">
-    <mat-icon [routerLink]="['/add']" aria-label="add examen">add</mat-icon>
+    <mat-icon routerLink="/examens/new" aria-label="add examen">add</mat-icon>
   </button>
 </div>
 
@@ -37,15 +37,13 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
       <td mat-cell *matCellDef="let examen">
-        <button mat-icon-button color="accent" matTooltip="edit">
-          <mat-icon (click)="editExamen(examen.id)" aria-label="edit examen">edit</mat-icon>
+        <button mat-icon-button color="warn" matTooltip="Liste Candidats">
+          <mat-icon [routerLink]="[examen.id]"  aria-label="delete examen">people</mat-icon>
         </button>
         <button mat-icon-button color="warn" matTooltip="delete">
           <mat-icon (click)="deleteCandidat(examen)" aria-label="delete examen">delete_forever</mat-icon>
         </button>
-        <button mat-icon-button color="warn" matTooltip="Liste Candidats">
-          <mat-icon [routerLink]="[examen.id]"  aria-label="delete examen">people</mat-icon>
-        </button>
+
       </td>
     </ng-container>
 

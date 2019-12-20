@@ -7,7 +7,8 @@ import {Logger} from '../../../core';
 import {ExamenService} from '../examen.service';
 import {ActivatedRoute} from '@angular/router';
 import {Examen} from '../examen';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-examen-detail',
@@ -23,7 +24,8 @@ export class ExamenDetailComponent implements OnInit {
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   id: string;
-  examen$: Observable<Examen>;
+  examen: Examen;
+  form: FormGroup;
 
   @HostListener('window:resize', ['$event'])
   onResize(event?) {
@@ -33,11 +35,12 @@ export class ExamenDetailComponent implements OnInit {
     this.setDisplayedColumns();
   }
 
-  constructor( private examenService: ExamenService,
-               private candidatService: CandidatService,
-               private logger: Logger,
-               private dialog: MatDialog,
-               private route: ActivatedRoute) {
+  constructor(
+    private examenService: ExamenService,
+    private candidatService: CandidatService,
+    private logger: Logger,
+    private dialog: MatDialog,
+    private route: ActivatedRoute) {
 
     this.screenHeight = window.screen.height;
     this.screenWidth = window.screen.width;
@@ -46,14 +49,26 @@ export class ExamenDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.id = this.route.snapshot.paramMap.get('id');
-    this.examen$ = this.examenService.findOne(this.id);
+    this.examenService.findById(this.id).subscribe( res => {
+      this.examen = res;
+      this.buildForm(res);
+    });
     this.loadCandidatsExamen();
     this.dsExam.paginator = this.paginator;
     this.dsExam.sort = this.sort;
     console.log(this.dsExam);
   }
 
+  buildForm(e: Examen) {
+    this.form = new FormGroup({
+      date:  new FormControl(new Date(e.date), Validators.required),
+      adresse: new FormControl(e.adresse, Validators.required),
+      dicipline: new FormControl(e.dicipline, Validators.required),
+    });
+    console.log(this.form);
+  }
   private loadCandidatsExamen() {
     this.candidatService.loadCandidatsByExamen(this.id).subscribe(data => {
       this.dsExam.data = data;
@@ -82,6 +97,15 @@ export class ExamenDetailComponent implements OnInit {
     });
   }
 
+  save() {
+    if (this.form.invalid) {
+      return;
+    }
+    // this.examen.subscribe(e => {
+    this.examenService.update(this.examen);
+    // });
+
+  }
   getFullName(candidat: Candidat): string {
     return `${candidat.nom} ${candidat.prenom}`;
   }

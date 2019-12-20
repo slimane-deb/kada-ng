@@ -1,1 +1,31 @@
-<p>examen-new works!</p>
+<div layout="row" layout-align="space-between center" flex class="layout-align-space-between-center layout-row flex">
+  <div class="top-container">
+    <span class="md-lgn-headline">{{ title }}</span>
+    <button class="btn-secondary" mat-mini-fab matTooltip="Home">
+      <mat-icon routerLink="/" aria-label="home icon">home</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="basic-container mat-elevation-z8">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+
+    <mat-step [stepControl]="examenFrom">
+      <ng-template matStepLabel>Détails</ng-template>
+      <app-examen-form [form]="examenFrom"></app-examen-form>
+      <div>
+        <button mat-raised-button matStepperNext class="btn-primary">Suivant</button>
+      </div>
+    </mat-step>
+
+
+    <mat-step>
+      <ng-template matStepLabel>Revue</ng-template>
+      <app-result-form [formData]="getExamen()"></app-result-form>
+      <div class="top-15">
+        <button mat-raised-button matStepperPrevious>Précedent</button>
+        <button class="btn-success" mat-raised-button cdkFocusInitial (click)="save()">Enregistrer</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

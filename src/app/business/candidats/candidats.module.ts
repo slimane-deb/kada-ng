@@ -8,6 +8,7 @@ import {CandidatNewComponent} from './candidat-new/candidat-new.component';
 import {CandidatListComponent} from './candidat-list/candidat-list.component';
 import {MaterialFormsModule} from '../../shared/forms/material-forms.module';
 import {SharedModule} from '../../shared/shared.module';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import {SharedModule} from '../../shared/shared.module';
     CandidatNewComponent
   ],
   providers: [
-    CandidatService
+    CandidatService,
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
   ],
   entryComponents: [
     CandidatDetailComponent

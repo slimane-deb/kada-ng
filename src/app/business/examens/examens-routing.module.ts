@@ -7,8 +7,8 @@ import {ExamenDetailComponent} from './examen-detail/examen-detail.component';
 
 const examensRoutes: Routes = [
   {  path: '', component: ExamenListComponent },
+  {  path: 'new', component: ExamenNewComponent },
   {  path: ':id', component: ExamenDetailComponent },
-  {  path: 'add', component: ExamenNewComponent }
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import {MaterialModule} from '../../material.module';
 import {PersoNextFormComponent} from './perso-next-form/perso-next-form.component';
 import {PersonalFormComponent} from './personal-form/personal-form.component';
 import {ResultFormComponent} from './result-form/result-form.component';
+import {ExamenFormComponent} from './examen-form/examen-form.component';
 
 
 
@@ -19,12 +20,14 @@ import {ResultFormComponent} from './result-form/result-form.component';
     PersoNextFormComponent,
     PersonalFormComponent,
     ResultFormComponent,
+    ExamenFormComponent
   ],
   exports: [
     MaterialModule,
     PersoNextFormComponent,
     PersonalFormComponent,
     ResultFormComponent,
+    ExamenFormComponent
   ],
   entryComponents: [
   ]

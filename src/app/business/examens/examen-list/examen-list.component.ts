@@ -4,7 +4,6 @@ import {Logger} from '../../../core';
 import {ConfirmedDialogComponent} from '../../../shared/dialogs';
 import {ExamenService} from '../examen.service';
 import {Examen} from '../examen';
-import {ExamenDetailComponent} from '../examen-detail/examen-detail.component';
 
 @Component({
   selector: 'app-examen-list',
@@ -56,26 +55,26 @@ export class ExamenListComponent implements OnInit {
     });
   }
 
-  editExamen(id: string): void {
-
-    this.examenService.findOne(id).subscribe(data => {
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = true;
-      dialogConfig.autoFocus = true;
-      dialogConfig.height = '80%';
-      dialogConfig.width = '80%';
-      dialogConfig.data = data;
-
-      const dialogRef = this.dialog.open(ExamenDetailComponent, dialogConfig);
-      dialogRef.afterClosed().subscribe(result => {
-        if (!result) {
-          return;
-        }
-        this.examenService.update(result)
-          .subscribe(_ => this.loadCandidats());
-      });
-    });
-  }
+  // editExamen(id: string): void {
+  //
+  //   this.examenService.findById(id).subscribe(data => {
+  //     const dialogConfig = new MatDialogConfig();
+  //     dialogConfig.disableClose = true;
+  //     dialogConfig.autoFocus = true;
+  //     dialogConfig.height = '80%';
+  //     dialogConfig.width = '80%';
+  //     dialogConfig.data = data;
+  //
+  //     const dialogRef = this.dialog.open(ExamenDetailComponent, dialogConfig);
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       if (!result) {
+  //         return;
+  //       }
+  //       this.examenService.update(result)
+  //         .subscribe(_ => this.loadCandidats());
+  //     });
+  //   });
+  // }
 
   deleteCandidat(examen: Examen): void {
     // Create configuration for the dialog
