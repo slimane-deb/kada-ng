@@ -18,6 +18,9 @@
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+
+  <app-file-upload formControlName="image" [progress]="progress"></app-file-upload>
+
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Téléphone" formControlName="tel" required>
   </mat-form-field>

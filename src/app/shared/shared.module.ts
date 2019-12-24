@@ -13,7 +13,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
   ],
   declarations: [ ],
-  exports:[
+  exports: [
     DialogsModule,
     MaterialFormsModule
   ]

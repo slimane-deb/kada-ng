@@ -59,9 +59,9 @@ export class CandidatService {
 
   addCandidat(candidat: Candidat): Observable<any> {
     return this.http
-      .post<Candidat>(this.candidatsUrl, candidat)
+      .post<Candidat>(this.candidatsUrl, candidat, { reportProgress: true, observe: 'events'}  )
       .pipe(
-        tap((c: Candidat) => this.notify(`added candidats w/ id=${c.id}`, 'POST')),
+        tap(_ => this.notify(`added candidats w/ id=${candidat.id}`, 'POST')),
         catchError(this.handleError('addCandidat', 'POST'))
       );
   }

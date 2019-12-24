@@ -11,7 +11,7 @@
 
     <mat-step [stepControl]="personalForm">
       <ng-template matStepLabel>Coordonnées</ng-template>
-      <app-personal-form [form]="personalForm"></app-personal-form>
+      <app-personal-form [form]="personalForm" [progress]="progress"></app-personal-form>
       <div>
         <button mat-raised-button matStepperNext class="btn-primary">Suivant</button>
       </div>

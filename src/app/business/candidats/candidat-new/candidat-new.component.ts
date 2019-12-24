@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Candidat} from '../candidat';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Logger} from '../../../core';
 import {CandidatService} from '../candidat.service';
 import {Router} from '@angular/router';
+import {toResponseBody, uploadProgress} from '../../../shared/utils';
 
 @Component({
   selector: 'app-new-candidat',
@@ -16,6 +17,7 @@ export class CandidatNewComponent implements OnInit {
   personalForm: FormGroup;
   persoNext: FormGroup;
   // addressForm: FormGroup;
+  progress = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,6 +42,7 @@ export class CandidatNewComponent implements OnInit {
       sexe: ['h', Validators.required],
       nomJF: ['', ],
       dateNaiss: ['', Validators.required],
+      image:['', Validators.required],
       cin: ['', Validators.required],
       tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')] ],
       email: ['', [Validators.required, Validators.email] ]
@@ -73,12 +76,15 @@ export class CandidatNewComponent implements OnInit {
     const newCandidat = this.getCandidat();
     this.logger.log(`New Candidat: ${newCandidat}`);
 
-    this.contactService.addCandidat(newCandidat).subscribe(result => {
-      if (result) {
-        // go to Candidat List page
-        this.router.navigate(['/']);
+    this.contactService.addCandidat(newCandidat).pipe(
+      uploadProgress(p => (this.progress = p)),
+      toResponseBody()
+    ).subscribe(result => {
+          console.log(result);
+          // go to Candidat List page
+          this.router.navigate(['/']);
       }
-    });
+    );
   }
   invalidForms(): boolean {
     return (this.personalForm.invalid ||

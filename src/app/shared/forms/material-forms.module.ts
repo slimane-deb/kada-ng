@@ -6,6 +6,7 @@ import {PersoNextFormComponent} from './perso-next-form/perso-next-form.componen
 import {PersonalFormComponent} from './personal-form/personal-form.component';
 import {ResultFormComponent} from './result-form/result-form.component';
 import {ExamenFormComponent} from './examen-form/examen-form.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 
@@ -14,20 +15,22 @@ import {ExamenFormComponent} from './examen-form/examen-form.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
   ],
   declarations: [
     PersoNextFormComponent,
     PersonalFormComponent,
     ResultFormComponent,
-    ExamenFormComponent
+    ExamenFormComponent,
+    FileUploadComponent
   ],
   exports: [
     MaterialModule,
     PersoNextFormComponent,
     PersonalFormComponent,
     ResultFormComponent,
-    ExamenFormComponent
+    ExamenFormComponent,
+    FileUploadComponent
   ],
   entryComponents: [
   ]

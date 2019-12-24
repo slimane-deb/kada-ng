@@ -7,8 +7,8 @@ import {CandidatDetailComponent} from './candidat-detail/candidat-detail.compone
 
 const candidatsRoutes: Routes = [
   {  path: '', component: CandidatListComponent },
-  {  path: ':id', component: CandidatDetailComponent },
-  {  path: 'new', component: CandidatNewComponent }
+  {  path: 'new', component: CandidatNewComponent },
+  {  path: ':id', component: CandidatDetailComponent }
 ];
 
 @NgModule({

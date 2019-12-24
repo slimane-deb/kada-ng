@@ -16,7 +16,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatDatepicker, MatDatepickerModule, MatDialogModule, MatNativeDateModule} from '@angular/material';
+import {MatDatepicker, MatDatepickerModule, MatDialogModule, MatNativeDateModule, MatProgressBarModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -38,7 +38,8 @@ import {MatDatepicker, MatDatepickerModule, MatDialogModule, MatNativeDateModule
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ],
   declarations: [ ],
   exports: [
@@ -60,7 +61,8 @@ import {MatDatepicker, MatDatepickerModule, MatDialogModule, MatNativeDateModule
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressBarModule
   ]
 })
 
