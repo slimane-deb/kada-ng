@@ -16,7 +16,6 @@ export class CandidatNewComponent implements OnInit {
   title = 'Ajouter Candidat';
   personalForm: FormGroup;
   persoNext: FormGroup;
-  // addressForm: FormGroup;
   progress = 0;
 
   constructor(
@@ -32,7 +31,6 @@ export class CandidatNewComponent implements OnInit {
       console.log(value); });
     this.persoNext.valueChanges.subscribe(val => {
       console.log(val); });
-    // this.buildAddressForm();
   }
 
   buildPersonalForm(): void {
@@ -42,7 +40,7 @@ export class CandidatNewComponent implements OnInit {
       sexe: ['h', Validators.required],
       nomJF: ['', ],
       dateNaiss: ['', Validators.required],
-      image:['', Validators.required],
+      image: ['', Validators.required],
       cin: ['', Validators.required],
       tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')] ],
       email: ['', [Validators.required, Validators.email] ]
@@ -59,15 +57,6 @@ export class CandidatNewComponent implements OnInit {
     });
   }
 
-  // buildAddressForm(): void {
-  //   this.addressForm = this.formBuilder.group({
-  //     street: ['', Validators.required],
-  //     city: ['', Validators.required],
-  //     state: ['', Validators.required ],
-  //     zip: ['', Validators.required],
-  //   });
-  // }
-
   save() {
     if (this.invalidForms()) {
       return;
@@ -75,7 +64,7 @@ export class CandidatNewComponent implements OnInit {
 
     const newCandidat = this.getCandidat();
     this.logger.log(`New Candidat: ${newCandidat}`);
-
+    newCandidat.image = window.btoa(newCandidat.image)
     this.contactService.addCandidat(newCandidat).pipe(
       uploadProgress(p => (this.progress = p)),
       toResponseBody()

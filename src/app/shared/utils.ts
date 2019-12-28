@@ -33,3 +33,18 @@ export function uploadProgress<T>( cb: ( progress: number ) => void ) {
     }
   });
 }
+
+export function convertToBase64(file: File): string {
+  const reader: FileReader = new FileReader();
+  reader.readAsDataURL(file);
+  let base64String = '';
+
+  reader.onload = (): void => {
+    base64String = (reader.result as string).match(
+      /.+;base64,(.+)/
+    )[1];
+  };
+  return base64String;
+
+}
+

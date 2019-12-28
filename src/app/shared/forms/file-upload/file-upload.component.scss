@@ -1,8 +1,23 @@
 mat-card {
-  display: block;
+  //display: block;
+  display: flex;
+  justify-content: center;
   width: 70%;
 }
-
+mat-card img {
+  width: 300px
+}
+mat-card-actions{
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-self: center;
+}
+//mat-card-actions span{
+//  position: relative;
+//  top: -4px;
+//  overflow: auto
+//  }
 .file-input {
 //  position: absolute;
 //  left: 0;

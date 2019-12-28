@@ -1,7 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {Component, HostListener, Inject, OnInit, ViewChild} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Candidat} from '../candidat';
+import {CandidatService} from '../candidat.service';
+import {Logger} from '../../../core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-candidat-detail',
@@ -12,18 +15,36 @@ export class CandidatDetailComponent implements OnInit {
 
   title = 'Edit Candidat';
   form: FormGroup;
+  id: string;
+  imgSrc: string;
 
   constructor(
+    private candidatService: CandidatService,
+    private logger: Logger,
+    private route: ActivatedRoute,
     private dialogRef: MatDialogRef<CandidatDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public candidat: Candidat) { }
 
   ngOnInit() {
-    this.buildForm();
+    if (!this.candidat.id) {
+
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.candidatService.getCandidat(this.id).subscribe( data => {
+        this.candidat = data;
+        // this.candidat.image = new File([window.atob(this.candidat.image)],
+        //   this.candidat.nom + '' + this.candidat.prenom);
+        // this.imgSrc =
+        this.buildForm();
+        }
+      );
+    } else {
+      this.buildForm();
+    }
+
     // this.form.valueChanges.subscribe(val => {
     //   console.log(val);
     // });
   }
-
   buildForm() {
     this.form = new FormGroup({
       id: new FormControl(this.candidat.id),

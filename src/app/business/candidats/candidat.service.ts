@@ -47,7 +47,7 @@ export class CandidatService {
   /**
    * GET: get an existing candidat from the database by an id
    */
-  getCandidat(id: number): Observable<any> {
+  getCandidat(id: string): Observable<any> {
     const url = `${this.candidatsUrl}/${id}`;
     return this.http
       .get<Candidat>(url)

@@ -1,5 +1,6 @@
 import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-file-upload',
@@ -15,19 +16,30 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
   ],
   styleUrls: ['./file-upload.component.scss']
 })
-export class FileUploadComponent implements ControlValueAccessor {
+export class FileUploadComponent implements ControlValueAccessor, OnInit {
 
   @Input() progress;
   onChange: Function;
-  private file: File | null = null;
+  @Input()
+  file: File | null = null;
+  private imageURL: any;
 
   @HostListener('change', ['$event.target.files']) emitFiles( event: FileList ) {
     const file = event && event.item(0);
     this.onChange(file);
     this.file = file;
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+    };
+    // reader.readAsDataURL(file);
   }
-
-  constructor( private host: ElementRef<HTMLInputElement> ) {
+  ngOnInit() {
+    // console.log('mdfdmfmdfmdmfdm'+this.file);
+    this.imageURL = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + this.file);
+  }
+  constructor(     private sanitizer: DomSanitizer,
+                   private host: ElementRef<HTMLInputElement> ) {
   }
 
   writeValue( value: null ) {
@@ -42,6 +54,8 @@ export class FileUploadComponent implements ControlValueAccessor {
 
   registerOnTouched( fn: Function ) {
   }
-
+  transform() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + this.file);
+  }
 
 }

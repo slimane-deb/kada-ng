@@ -56,7 +56,7 @@ export class CandidatListComponent implements OnInit {
     });
   }
 
-  editCandidat(id: number): void {
+  editCandidat(id: string): void {
 
     this.candidatService.getCandidat(id).subscribe(data => {
       const dialogConfig = new MatDialogConfig();

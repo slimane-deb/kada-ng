@@ -1,6 +1,6 @@
 <h3 mat-dialog-title>{{ title }}</h3>
 
-<mat-accordion class="example-headers-align">
+<mat-accordion class="example-headers-align" *ngIf="form">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -19,7 +19,7 @@
     <app-next-form [form]="form" ></app-next-form>
   </mat-expansion-panel>
 
-  <div class="top-15" align="end">
+  <div class="top-15" align="end" >
     <button mat-raised-button (click)="close()">Fermer</button>
     <button class="btn-success" mat-raised-button [disabled]="!form.valid || !form.dirty" (click)="save()">Enregister</button>
   </div>
