@@ -19,7 +19,7 @@
   <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <app-file-upload [file]="file" formControlName="image" [progress]="progress"></app-file-upload>
+  <app-file-upload [file]="imgStr" formControlName="image" [progress]="progress"></app-file-upload>
 
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Téléphone" formControlName="tel" required>

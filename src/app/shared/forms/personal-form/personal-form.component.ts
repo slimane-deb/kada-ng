@@ -21,12 +21,12 @@ export class PersonalFormComponent implements OnInit {
   sexe = 'h';
   @Input()
   progress ;
-  file: any;
+  imgStr: any;
 
   constructor() { }
 
   ngOnInit() {
-    this.file = this.form.get('image').value;
+    this.imgStr = this.form.get('image').value;
   }
 
 }

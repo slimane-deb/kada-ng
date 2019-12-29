@@ -40,7 +40,7 @@ export class CandidatNewComponent implements OnInit {
       sexe: ['h', Validators.required],
       nomJF: ['', ],
       dateNaiss: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [''],
       cin: ['', Validators.required],
       tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')] ],
       email: ['', [Validators.required, Validators.email] ]
@@ -64,7 +64,7 @@ export class CandidatNewComponent implements OnInit {
 
     const newCandidat = this.getCandidat();
     this.logger.log(`New Candidat: ${newCandidat}`);
-    newCandidat.image = window.btoa(newCandidat.image)
+    // newCandidat.image = window.btoa(newCandidat.image)
     this.contactService.addCandidat(newCandidat).pipe(
       uploadProgress(p => (this.progress = p)),
       toResponseBody()
@@ -76,10 +76,7 @@ export class CandidatNewComponent implements OnInit {
     );
   }
   invalidForms(): boolean {
-    return (this.personalForm.invalid ||
-      this.persoNext.invalid
-      // || this.addressForm.invalid
-    );
+    return (this.personalForm.invalid || this.persoNext.invalid );
   }
 
   getCandidat(): Candidat {

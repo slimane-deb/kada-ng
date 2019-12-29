@@ -2,18 +2,19 @@
   <mat-card-actions>
     <span >{{file ? file.name : 'Photo'}}</span>
     <mat-icon>file_upload</mat-icon>
-    <input class="file-input" type="file" id="fileUpload" name="fileUpload" accept="image/*"  required />
+    <input class="file-input"  id="fileUpload" name="fileUpload"
+           accept="image/*" type="file" (change)="emitFiles($event)" required />
+
   </mat-card-actions>
-  <picture>
-    <source media='(min-width:0px)' [srcset]="imageURL">
-    <img mat-card-image src=""  [alt]="file? file.name : ' '">
+  <picture >
+<!--    <source media='(min-width:0px)' [srcset]="imageURL" >-->
+    <img mat-card-image [src]="imageURL"  [alt]="file? file.name : ' '" >
   </picture>
 </mat-card>
-
 <div class="form-group" *ngIf="progress > 0">
   <div class="progress">
     <mat-card>
-<!--    <div class="progress-bar" [style.width.%]="progress">{{progress}}%</div>-->
+    <div class="progress-bar" [style.width.%]="progress">{{progress}}%</div>
       <mat-progress-bar [value]="progress"></mat-progress-bar>
     </mat-card>
 
