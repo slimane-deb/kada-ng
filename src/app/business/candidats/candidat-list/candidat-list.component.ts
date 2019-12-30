@@ -63,7 +63,7 @@ export class CandidatListComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       dialogConfig.height = '80%';
-      dialogConfig.width = '80%';
+      dialogConfig.width = '70%';
       dialogConfig.data = data;
 
       const dialogRef = this.dialog.open(CandidatDetailComponent, dialogConfig);

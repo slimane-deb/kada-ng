@@ -24,6 +24,7 @@
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Téléphone" formControlName="tel" required>
   </mat-form-field>
+  <span class="text-danger" *ngIf="form.controls['tel'].hasError('pattern') && (form.controls['tel'].dirty || form.controls['tel'].touched)">Numéro de Téléphone non valide</span>
   <mat-form-field class="example-full-width">
     <input matInput placeholder="Pièce ID" formControlName="cin" required>
   </mat-form-field>

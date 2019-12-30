@@ -18,12 +18,21 @@
     <input matInput placeholder="Adresse" formControlName="adresse" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Nationalité" formControlName="nation" required>
+    <mat-label>Nationalité</mat-label>
+    <mat-select formControlName="nation" required>
+      <mat-option *ngFor="let n of nations" [value]="n"> {{n}} </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Groupe Sanguin" formControlName="sang_grp" required>
+    <mat-label>Groupe Sanguin</mat-label>
+    <mat-select formControlName="sang_grp" required>
+      <mat-option *ngFor="let g of grps" [value]="g"> {{g}} </mat-option>
+    </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Situation Familiale" formControlName="sit_fam" required>
+    <mat-label>Situation Familiale</mat-label>
+    <mat-select formControlName="sit_fam" required>
+      <mat-option *ngFor="let sit of situations" [value]="sit"> {{sit}} </mat-option>
+    </mat-select>
   </mat-form-field>
 </form>

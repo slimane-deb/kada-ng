@@ -42,7 +42,8 @@ export class CandidatNewComponent implements OnInit {
       dateNaiss: ['', Validators.required],
       image: [''],
       cin: ['', Validators.required],
-      tel: ['', [Validators.required, Validators.pattern('^[0-9]+$')] ],
+      tel: ['', [Validators.required, Validators.minLength(10),
+        Validators.pattern(/^0(\d{9})$/)] ],
       email: ['', [Validators.required, Validators.email] ]
     });
   }

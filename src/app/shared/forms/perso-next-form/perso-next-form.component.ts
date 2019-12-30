@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {GROUPE_SANG, Pays, Situations} from '../form-data';
 
 @Component({
   selector: 'app-next-form',
@@ -9,6 +10,9 @@ import {FormGroup} from '@angular/forms';
 export class PersoNextFormComponent implements OnInit {
 
   @Input() form: FormGroup;
+  situations = Situations;
+  grps = GROUPE_SANG;
+  nations = Pays;
   constructor() { }
 
   ngOnInit() {
