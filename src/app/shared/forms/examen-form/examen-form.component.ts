@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {APP_DATE_FORMATS, AppDateAdapter} from '../../app-date-adapter';
 import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material';
+import {DICIPLINES} from '../form-data';
 
 @Component({
   selector: 'app-examen-form',
@@ -15,6 +16,7 @@ import {DateAdapter, MAT_DATE_FORMATS} from '@angular/material';
 export class ExamenFormComponent implements OnInit {
 
   @Input() form: FormGroup;
+  diciples = DICIPLINES;
   constructor() { }
 
   ngOnInit() {

@@ -8,6 +8,9 @@
     <input matInput placeholder="Adresse" formControlName="adresse" required>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Dicpline" formControlName="dicipline" required>
+    <mat-label>Dicpline</mat-label>
+    <mat-select formControlName="dicipline" required>
+      <mat-option *ngFor="let d of diciples" [value]="d"> {{d}} </mat-option>
+    </mat-select>
   </mat-form-field>
 </form>

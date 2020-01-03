@@ -4,7 +4,7 @@ import {filter, map, tap} from 'rxjs/operators';
 import {HttpEvent, HttpEventType, HttpResponse} from '@angular/common/http';
 
 export function requiredFileType( type: string ) {
-  return function(control: FormControl) {
+  return (control: FormControl) => {
     const file = control.value;
     if ( file ) {
       const extension = file.name.split('.')[1].toLowerCase();

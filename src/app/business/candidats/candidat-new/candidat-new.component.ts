@@ -27,10 +27,10 @@ export class CandidatNewComponent implements OnInit {
   ngOnInit() {
     this.buildPersonalForm();
     this.buildPersoNextForm();
-    this.personalForm.valueChanges.subscribe( value => {
-      console.log(value); });
-    this.persoNext.valueChanges.subscribe(val => {
-      console.log(val); });
+    // this.personalForm.valueChanges.subscribe( value => {
+    //   console.log(value); });
+    // this.persoNext.valueChanges.subscribe(val => {
+    //   console.log(val); });
   }
 
   buildPersonalForm(): void {

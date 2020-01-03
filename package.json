@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "postbuild": "npm run deploy",
-    "predeploy": "rimraf ../kada/src/main/resources/static/ && mkdirp ../kada/src/main/resources/static",
-    "deploy": "copyfiles -f dist/** ../kada/src/main/resources/static",
+    "deploy": "ng build --prod --output-path=../kada/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -34,10 +33,12 @@
     "@angular/cli": "~8.1.1",
     "@angular/compiler-cli": "~8.1.1",
     "@angular/language-service": "~8.1.1",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "copyfiles": "^1.2.0",
+    "electron": "^7.1.7",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -48,9 +49,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.4.3",
-    "rimraf": "^2.6.1",
-    "copyfiles": "^1.2.0",
-    "mkdirp": "^0.5.1"
+    "typescript": "~3.4.3"
   }
 }

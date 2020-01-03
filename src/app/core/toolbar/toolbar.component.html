@@ -10,6 +10,8 @@
   </div>
   <div class="desktop-menu">
     <span class="spacer"></span>
-    <a *ngFor="let menu_item of menu; let i = index" [routerLink]="[menu_item.url]" [target]="menu_item.target" mat-button class="menu-item">{{ menu_item.name }}</a>
+    <a *ngFor="let menu_item of menu; let i = index" [routerLink]="[menu_item.url]" [target]="menu_item.target" mat-button class="menu-item">
+      <mat-icon>{{menu_item.icon}}</mat-icon>
+      {{ menu_item.name }}</a>
   </div>
 </mat-toolbar>

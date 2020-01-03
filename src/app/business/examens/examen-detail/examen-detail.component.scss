@@ -11,6 +11,19 @@ table {
   color: #000000;
 }
 #title_ex{
-  font-family: SANS-SERIF;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#title_ex h2{
+  background-color: aliceblue;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  width: 50%;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.25);
 }

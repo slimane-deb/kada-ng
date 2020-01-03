@@ -20,7 +20,14 @@
 
     <mat-step>
       <ng-template matStepLabel>Revue</ng-template>
-      <app-result-form [formData]="getExamen()"></app-result-form>
+      <h4>Voici les informations renseignées: </h4>
+      <h4>Date: </h4>
+      {{ examenFrom.get('date').value | date: 'dd/MM/yyyy'}}
+      <h4>Adresse: </h4>
+      {{examenFrom.get('adresse').value}}
+      <h4>Dicipline: </h4>
+      {{examenFrom.get('dicipline').value}}
+      <br />
       <div class="top-15">
         <button mat-raised-button matStepperPrevious>Précedent</button>
         <button class="btn-success" mat-raised-button cdkFocusInitial (click)="save()">Enregistrer</button>

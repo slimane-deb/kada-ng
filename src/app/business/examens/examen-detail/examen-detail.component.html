@@ -1,8 +1,8 @@
 
 <div *ngIf="examen">
   <app-examen-form [form]="form" ></app-examen-form>
-<div layout="row" layout-align="space-between center" flex class="layout-align-space-between-center layout-row flex" id="title_ex">
- <h2> Liste des candidats pour l'examen du : {{(examen)?.date | date: 'dd/MM/yyyy' }}</h2>
+<div  id="title_ex">
+ <h2> Candidats pour l'examen du : {{(examen)?.date | date: 'dd/MM/yyyy' }}</h2>
 </div>
 
 <div class="basic-container mat-elevation-z8">

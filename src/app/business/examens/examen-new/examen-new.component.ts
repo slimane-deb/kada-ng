@@ -24,9 +24,8 @@ export class ExamenNewComponent implements OnInit {
 
   ngOnInit() {
     this.buildExamenForm();
-    this.examenFrom.valueChanges.subscribe(val => {
-      console.log(val); });
-    // this.buildAddressForm();
+    // this.examenFrom.valueChanges.subscribe(val => {
+    //   console.log(val); });
   }
 
   buildExamenForm(): void {
@@ -47,8 +46,7 @@ export class ExamenNewComponent implements OnInit {
 
     this.examenService.save(newExamen).subscribe(result => {
       if (result) {
-        // go to Examen List page
-        this.router.navigate(['/']);
+        this.router.navigate(['/examens']);
       }
     });
   }

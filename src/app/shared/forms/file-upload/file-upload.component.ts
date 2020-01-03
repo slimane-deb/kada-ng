@@ -23,7 +23,7 @@ export class FileUploadComponent implements ControlValueAccessor, OnInit {
   onChange: Function;
   @Input()
   file: File | null = null;
-  private imageURL: any;
+  imageURL: any;
 
   // @HostListener('change', ['$event.target.files'])
   emitFiles( event ) {

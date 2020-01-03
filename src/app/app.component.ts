@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'Kada Auto Ecole';
 
   menu: Array<any> = [
-    { name: 'Candidats', url: '/candidats' },
-    { name: 'Examens', url: '/examens' },
+    { name: 'Candidats', url: '/candidats', icon: 'people' },
+    { name: 'Examens', url: '/examens', icon: 'directions_car' },
   ];
 }

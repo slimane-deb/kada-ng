@@ -5,6 +5,7 @@ export const Situations = [
   'Veuf'
 ];
 export const GROUPE_SANG = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+export const DICIPLINES = ['Code', 'Créneau', 'Conduite'];
 export const Pays = ['Afrique du Sud',
 'Afghanistan',
 'Albanie',
