@@ -9,7 +9,45 @@
     "deploy": "ng build --prod --output-path=../kada/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "ng build --base-href ./ && electron .",
+    "electron-tsc": "tsc main.ts && ng build --base-href ./ && electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "main": "main.js",
+  "build": {
+    "asar": true,
+    "appId": "com.kada",
+    "copyright": "kada",
+    "productName": "kada",
+    "win": {
+      "icon": "./src/assets/img/auto_ecole.ico",
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "directories": {
+      "buildResources": "assets"
+    }
   },
   "private": true,
   "dependencies": {
@@ -39,6 +77,7 @@
     "codelyzer": "^5.0.0",
     "copyfiles": "^1.2.0",
     "electron": "^7.1.7",
+    "electron-builder": "^21.2.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
