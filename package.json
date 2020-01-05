@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "postbuild": "npm run deploy",
-    "deploy": "ng build --prod --output-path=../kada/src/main/resources/static",
+    "deploy": "ng build --base-href ./ --output-path=../kada/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -19,14 +19,15 @@
   "build": {
     "asar": true,
     "appId": "com.kada",
-    "copyright": "kada",
+    "copyright": "Copyright © 2020 Slimane",
     "productName": "kada",
     "win": {
-      "icon": "./dist/assets/img/auto_ecole.ico",
-      "target": "portable"
+      "icon": "./assets/img/auto_ecole.ico",
+      "target": "nsis"
     },
     "linux": {
-      "icon": "./dist/assets/img/auto_ecole.ico"
+      "icon": "./assets/img/auto_ecole.ico",
+      "target": "AppImage"
     }
   },
   "private": true,

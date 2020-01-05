@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
 import {Candidat} from './candidat';
 import {Observable} from 'rxjs';
 import {ToastService, Logger} from '../../core';
@@ -9,8 +8,8 @@ import {catchError, map, tap} from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/hal+json',
-      'Access-Control-Allow-Origin': 'http://localhost:4200',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTION',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': '*',
       'Access-Control-Allow-Headers': '*'
   })
 };
@@ -18,8 +17,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class CandidatService {
-  private baseUrl = environment.restApi;
-  private candidatsUrl = `${this.baseUrl}candidats`;
+  // private baseUrl = environment.restApi;
+  private baseUrl = 'http://localhost:8080/';
+  private candidatsUrl = `/api/candidats`;
 
   constructor(
     private http: HttpClient,
@@ -86,7 +86,7 @@ export class CandidatService {
       );
   }
   loadCandidatsByExamen(idExamen: string): Observable<any>  {
-    const url = `${this.baseUrl}examens/${idExamen}/candidats`;
+    const url = `/api/examens/${idExamen}/candidats`;
     return this.http
       .get<any>(url, httpOptions)
       .pipe(

@@ -11,7 +11,7 @@ import {Examen} from './examen';
 })
 export class ExamenService {
   private baseUrl = environment.restApi;
-  private examensUrl = `${this.baseUrl}examens`;
+  private examensUrl = `/api/examens`;
 
   constructor(
     private http: HttpClient,
