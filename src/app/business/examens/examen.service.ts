@@ -11,7 +11,7 @@ import {Examen} from './examen';
 })
 export class ExamenService {
   private baseUrl = environment.restApi;
-  private examensUrl = `/api/examens`;
+  private examensUrl = `http://localhost:8080/api/examens`;
 
   constructor(
     private http: HttpClient,

@@ -1,34 +1,45 @@
 {
   "name": "kada-ng",
   "version": "0.0.0",
+  "description": "App For Auto",
+  "main": "electron-main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "postbuild": "npm run deploy",
-    "deploy": "ng build --base-href ./ --output-path=../kada/src/main/resources/static",
+    "deploy": "ng build --output-path=../kada/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build --base-href ./ && electron .",
     "electron-tsc": "tsc main.ts && ng build --base-href ./ && electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --windows",
+    "package:linux": "electron-packager . kada --overwrite --platform=linux --arch=x64 --asar --icon=src/assets/img/auto_ecole.png  --out=release-builds",
+    "package:win": "electron-packager . kada --platform=win32 --arch=x64 --icon=src/assets/img/auto_ecole.png --out=release-builds ",
+    "create-installer-win": "node installers/windows/createinstaller.js"
   },
-  "main": "main.js",
+  "author": "Slimane <slimane.deb@outlook.com>",
+  "license": "{build.copyright}",
   "build": {
-    "asar": true,
     "appId": "com.kada",
     "copyright": "Copyright © 2020 Slimane",
     "productName": "kada",
     "win": {
-      "icon": "./assets/img/auto_ecole.ico",
+      "icon": "../src/assets/img/auto_ecole.png",
       "target": "nsis"
     },
     "linux": {
-      "icon": "./assets/img/auto_ecole.ico",
-      "target": "AppImage"
-    }
+      "icon": "../src/assets/img/auto_ecole.png",
+      "target": "AppImage",
+      "category": "Utility"
+    },
+    "files": [
+      "**/*",
+      "dist/**/*"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -60,6 +71,8 @@
     "copyfiles": "^1.2.0",
     "electron": "^7.1.7",
     "electron-builder": "^21.2.0",
+    "electron-packager": "^14.1.1",
+    "electron-winstaller": "^4.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
