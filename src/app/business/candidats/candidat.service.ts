@@ -18,8 +18,8 @@ const httpOptions = {
 })
 export class CandidatService {
   // private baseUrl = environment.restApi;
-  private baseUrl = 'http://localhost:8080/';
-  private candidatsUrl = `http://localhost:8080/api/candidats`;
+  private baseUrl = 'http://localhost:8081/';
+  private candidatsUrl = `http://localhost:8081/api/candidats`;
 
   constructor(
     private http: HttpClient,
@@ -86,7 +86,7 @@ export class CandidatService {
       );
   }
   loadCandidatsByExamen(idExamen: string): Observable<any>  {
-    const url = `http://localhost:8080/api/examens/${idExamen}/candidats`;
+    const url = `http://localhost:8081/api/examens/${idExamen}/candidats`;
     return this.http
       .get<any>(url, httpOptions)
       .pipe(
