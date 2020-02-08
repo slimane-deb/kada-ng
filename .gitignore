@@ -43,8 +43,7 @@ Thumbs.db
 /release-builds/*
 /release-builds/
 /release-builds/kada-linux-x64/
+back/jre/lib/applet/
+/back/jre/**/*
 /back/kada4j.exe
-/back/jre/
-/back/kada4j.exe
-back/jre/*
 /back/jre/
