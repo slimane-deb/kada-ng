@@ -34,7 +34,11 @@
       "category": "Utility"
     },
     "nsis": {
-      "artifactName": "${productName}-setup${version}.exe"
+      "artifactName": "${productName}-setup${version}.exe",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": false
     },
     "files": [
       "dist/**/*",
@@ -43,8 +47,7 @@
       "service.bat"
     ],
     "extraFiles": [
-      "back/**/*",
-      "service.bat"
+      "back/**/*"
     ]
   },
   "private": true,

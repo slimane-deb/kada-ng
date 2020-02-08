@@ -9,8 +9,10 @@ process.env.NODE_ENV = 'dev';
 const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let win;
+// start the backend
+// shell.openItem("back\\service.bat");
+
 // Create our App Window
-shell.openItem("service.bat");
 app.on("ready", createWindow);
 // Fix for MAC to Quite
 app.on("window-all-closed", () => {
