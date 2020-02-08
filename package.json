@@ -1,6 +1,6 @@
 {
   "name": "kada-ng",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "App For Auto",
   "main": "electron-main.js",
   "scripts": {
@@ -15,11 +15,8 @@
     "electron": "ng build --prod --base-href ./ && electron .",
     "electron-tsc": "tsc main.ts && ng build --base-href ./ && electron .",
     "pack": "electron-builder --dir",
-    "dist:linux": "electron-builder --linux",
-    "dist:win": "electron-builder --windows",
-    "package:linux": "electron-packager . kada --overwrite --platform=linux --arch=x64 --asar --icon=src/assets/img/auto_ecole.png  --out=release-builds",
-    "package:win": "electron-packager . kada --platform=win32 --arch=x64 --icon=src/assets/img/auto_ecole.png --out=release-builds ",
-    "create-installer-win": "node installers/windows/createinstaller.js"
+    "dist:linux": "ng build --prod --base-href ./ && electron-builder --linux",
+    "dist:win": "ng build --prod --base-href ./ && electron-builder --windows"
   },
   "author": "Slimane <slimane.deb@outlook.com>",
   "license": "${build.copyright}",
@@ -36,10 +33,18 @@
       "target": "AppImage",
       "category": "Utility"
     },
+    "nsis": {
+      "artifactName": "${productName}-setup${version}.exe"
+    },
     "files": [
       "dist/**/*",
       "package.json",
-      "electron-main.js"
+      "electron-main.js",
+      "service.bat"
+    ],
+    "extraFiles": [
+      "back/**/*",
+      "service.bat"
     ]
   },
   "private": true,
@@ -69,11 +74,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
-    "copyfiles": "^1.2.0",
     "electron": "^7.1.7",
     "electron-builder": "^21.2.0",
-    "electron-packager": "^14.1.1",
-    "electron-winstaller": "^4.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

@@ -2,12 +2,7 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 const { shell } = require('electron');
-//handle setupevents as quickly as possible ==> for electron installer
-// const setupEvents = require('./installers/setupEvents');
-// if (setupEvents.handleSquirrelEvent()) {
-//   // squirrel event handled and app will exit in 1000ms, so don't do anything else
-//   return;
-// }
+
 // SET ENV
 process.env.NODE_ENV = 'dev';
 // process.env.NODE_ENV = 'prod';
@@ -15,6 +10,7 @@ const {app, BrowserWindow, Menu, ipcMain} = electron;
 
 let win;
 // Create our App Window
+shell.openItem("service.bat");
 app.on("ready", createWindow);
 // Fix for MAC to Quite
 app.on("window-all-closed", () => {
@@ -36,6 +32,7 @@ function createWindow() {
       webSecurity: false
     }
   });
+
   // Loading the Dist Folder
   win.loadURL('file://' + __dirname + '/dist/index.html');
   //On Close Event
@@ -93,3 +90,4 @@ if(process.env.NODE_ENV !== 'prod'){
     ]
   });
 }
+
