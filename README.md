@@ -17,3 +17,6 @@ ng g module features/candidats --routing=true
     ]
 `
 used for **electron-builder**
+
+## If electron-packager
+electron-packager --out winx64 --overwrite --platform win32 --appname APP . --executable-name ABC --no-prune
